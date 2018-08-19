@@ -19,8 +19,6 @@ public class Info_Team_Activity extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(Info_Team_Activity.this, List_Country_Activity.class));
                 finish();
-
-
             }
         }, 3000);
 
