@@ -30,7 +30,7 @@ public class Info_Country_Activity extends AppCompatActivity {
     }
 
     private void intit() {
-        mRecyclerView = findViewById(R.id.actin_recycleview);
+        //mRecyclerView = findViewById(R.id.actin_recycleview);
 
     }
 
