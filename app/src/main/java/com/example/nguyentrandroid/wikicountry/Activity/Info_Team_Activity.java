@@ -12,7 +12,7 @@ public class Info_Team_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_info_team);
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
