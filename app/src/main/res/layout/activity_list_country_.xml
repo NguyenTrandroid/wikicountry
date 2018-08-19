@@ -12,6 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2196F3">
+        <SearchView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:queryHint="Search here"
+            android:iconifiedByDefault="true"
+            android:id="@+id/searchcoin">
+        </SearchView>
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
