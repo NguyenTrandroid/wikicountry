@@ -27,7 +27,6 @@ public class Info_Country_Activity extends AppCompatActivity {
 
     private void intdata() {
         setUpRecyclerView();
-        mAdapter = new AdapterInfoCountry;
     }
 
     private void intit() {
