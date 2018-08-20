@@ -1,6 +1,8 @@
 package com.example.nguyentrandroid.wikicountry.Obj;
 
-public class Country {
+import java.io.Serializable;
+
+public class Country implements Serializable {
     private String name, alpha2Code, capital, region, population, callingCodes, timezones, nativeName, borders, languages, area, currencies;
 
     public Country(String name, String alpha2Code, String capital, String region, String population, String callingCodes, String timezones, String nativeName, String borders, String languages, String area, String currencies) {

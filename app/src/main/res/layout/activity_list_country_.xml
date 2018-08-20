@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#2196F3">
         <SearchView
+            android:onClick="S"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:queryHint="Search here"
