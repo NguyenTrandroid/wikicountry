@@ -45,9 +45,9 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Info_Country_Activity.class);
-        intent.putExtra("arrayList", arrayTemp);
-        intent.putExtra("i",position);
-        context.startActivity(intent);
+                intent.putExtra("arrayList", arrayTemp);
+                intent.putExtra("i",position);
+                context.startActivity(intent);
             }
         });
 
