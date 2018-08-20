@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_height="match_parent"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/bgr"
     >
+
+    <TextView
+        android:id="@+id/appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="Wikicountry"
+        android:textColor="#ffffff"
+        android:textSize="60sp" />
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/img"
         android:layout_width="wrap_content"
@@ -20,4 +32,27 @@
         android:text="NNS Team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:onClick="chontienganh"
+        android:id="@+id/tienganh"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="57dp"
+        android:layout_marginEnd="70dp"
+        app:srcCompat="@drawable/anh" />
+    <ImageView
+        android:scaleType="fitXY"
+        android:onClick="chontiengviet"
+        android:id="@+id/tiengviet"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="57dp"
+        android:layout_marginStart="70dp"
+        app:srcCompat="@drawable/viet" />
 </RelativeLayout>
