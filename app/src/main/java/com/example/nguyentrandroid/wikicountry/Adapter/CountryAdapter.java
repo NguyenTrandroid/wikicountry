@@ -1,6 +1,7 @@
 package com.example.nguyentrandroid.wikicountry.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.nguyentrandroid.wikicountry.Activity.Info_Country_Activity;
 import com.example.nguyentrandroid.wikicountry.Obj.Country;
 import com.example.nguyentrandroid.wikicountry.R;
 
@@ -37,8 +39,17 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.txtName.setText(countryArrayList.get(position).getName());
+        holder.txtName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Info_Country_Activity.class);
+        intent.putExtra("arrayList", arrayTemp);
+        intent.putExtra("i",position);
+        context.startActivity(intent);
+            }
+        });
 
     }
 
