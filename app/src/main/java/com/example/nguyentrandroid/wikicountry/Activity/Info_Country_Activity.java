@@ -1,6 +1,10 @@
 package com.example.nguyentrandroid.wikicountry.Activity;
 
 import android.content.ClipData;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -9,6 +13,8 @@ import android.widget.TextView;
 import com.example.nguyentrandroid.wikicountry.Obj.Country;
 import com.example.nguyentrandroid.wikicountry.R;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -50,6 +56,15 @@ public class Info_Country_Activity extends AppCompatActivity {
         arrayList = (ArrayList<Country>) getIntent().getSerializableExtra(
                 "arrayList");
         int i = getIntent().getIntExtra("i",0);
+        AssetManager assetManager = getAssets();
+        InputStream is = null;
+        try {
+            is = assetManager.open("imgflag/"+arrayList.get(i).getAlpha2Code().toLowerCase()+".png");
+            Bitmap bitmap = BitmapFactory.decodeStream(is);
+            imgFlag.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         txtNameCt.setText(arrayList.get(i).getName());
         codeCT.setText(arrayList.get(i).getAlpha2Code());
         capitalCT.setText(arrayList.get(i).getCapital());
