@@ -51,13 +51,11 @@ public class List_Country_Activity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(dividerItemDecoration);
     }
+// CODE MAU
+//        arrayList.add(new Country("Angola","AO","Luanda","Africa","25868000","244","UTC+01:00","Angola","COG","Portuguese","1246700","Angolan kwanza"));
+//        Intent intent = new Intent(this, Info_Country_Activity.class);
+//        intent.putExtra("arrayList", arrayList);
+//        intent.putExtra("i",0);// anh set cai positon cua item vao day nhe'
+//        startActivity(intent);
 
-    public void S(View view) {
-        arrayList.add(new Country("Angola","AO","Luanda","Africa","25868000","244","UTC+01:00","Angola","COG","Portuguese","1246700","Angolan kwanza"));
-        Intent intent = new Intent(this, Info_Country_Activity.class);
-        intent.putExtra("arrayList", arrayList);
-        intent.putExtra("i",0);// anh set cai positon cua item vao day nhe'
-        startActivity(intent);
-
-    }
 }
