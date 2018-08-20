@@ -11,13 +11,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Info_Country_Activity extends AppCompatActivity {
-
     @BindView(R.id.imgFlag)
     ImageView imgFlag;
     @BindView(R.id.txtNameCt)
     TextView txtNameCt;
     @BindView(R.id.codeCT)
     TextView codeCT;
+//    2 lỗi
     @BindView(R.id.capitalCT)
     TextView capitalCT;
     @BindView(R.id.regionCT)
@@ -26,6 +26,7 @@ public class Info_Country_Activity extends AppCompatActivity {
     TextView populationCT;
     @BindView(R.id.callingcodes)
     TextView callingcodes;
+//    3 lỗi
     @BindView(R.id.AreaCT)
     TextView AreaCT;
     @BindView(R.id.timezonesCT)
@@ -36,12 +37,14 @@ public class Info_Country_Activity extends AppCompatActivity {
     TextView nativenameCT;
     @BindView(R.id.currenciesCT)
     TextView currenciesCT;
+//    4 lỗi
     @BindView(R.id.languagesCT)
     TextView languagesCT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        5 lỗi
         setContentView(R.layout.activity_info_country_);
         ButterKnife.bind(this);
     }
