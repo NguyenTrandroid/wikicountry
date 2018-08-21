@@ -1,6 +1,8 @@
 package com.example.nguyentrandroid.wikicountry.Activity;
 
 import android.content.ClipData;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -48,11 +50,23 @@ public class Info_Country_Activity extends AppCompatActivity {
     @BindView(R.id.languagesCT)
     TextView languagesCT;
     ArrayList<Country> arrayList;
+    SharedPreferences sharedPreferences;
+    String dataapp ="ngon_ngu";
+    int nn;
+    TextView textViewname, textViewalpha, textViewthudo, textViewkhuvuc, textViewdanso,
+    textViewquayso, textViewdientich, textViewmuigio, textViewtiepgiap, textViewtendiaphuong,
+    textViewdonvitien, textViewngonngu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_country_);
+        sharedPreferences = getSharedPreferences(dataapp , Context.MODE_PRIVATE);
+        sharedPreferences =getSharedPreferences(getPackageName(), 0);
+        nn= sharedPreferences.getInt("ngonngu",1);
         ButterKnife.bind(this);
+        if (nn!=1){
+            setngonngu();
+        }
         arrayList = (ArrayList<Country>) getIntent().getSerializableExtra(
                 "arrayList");
         int i = getIntent().getIntExtra("i",0);
@@ -78,5 +92,32 @@ public class Info_Country_Activity extends AppCompatActivity {
         currenciesCT.setText(arrayList.get(i).getCurrencies());
         languagesCT.setText(arrayList.get(i).getLanguages());
 
+    }
+
+    private void setngonngu() {
+        textViewname = findViewById(R.id.textname);
+        textViewname.setText("Tên quốc gia");
+        textViewalpha = findViewById(R.id.textalpha2code);
+        textViewalpha.setText("Mã Alpha 2");
+        textViewthudo = findViewById(R.id.thudo);
+        textViewthudo.setText("Thủ đô");
+        textViewkhuvuc = findViewById(R.id.khuvuc);
+        textViewkhuvuc.setText("Khu vực");
+        textViewdanso = findViewById(R.id.danso);
+        textViewdanso.setText("Dân số");
+        textViewquayso = findViewById(R.id.maquayso);
+        textViewquayso.setText("Mã quay số");
+        textViewdientich = findViewById(R.id.dientich);
+        textViewdientich.setText("Diện tích");
+        textViewmuigio = findViewById(R.id.muigio);
+        textViewmuigio.setText("Múi giờ");
+        textViewtiepgiap = findViewById(R.id.tiepgiap);
+        textViewtiepgiap.setText("Tiếp giáp");
+        textViewtendiaphuong = findViewById(R.id.tendiaphuong);
+        textViewtendiaphuong.setText("Tên địa phương");
+        textViewdonvitien = findViewById(R.id.donvitiente);
+        textViewdonvitien.setText("Đơn vị tiền tệ");
+        textViewngonngu = findViewById(R.id.ngonngu);
+        textViewngonngu.setText("Ngôn ngữ");
     }
 }

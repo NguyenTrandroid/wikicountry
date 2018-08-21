@@ -1,6 +1,8 @@
 package com.example.nguyentrandroid.wikicountry.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -31,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import static com.example.nguyentrandroid.wikicountry.R.id.actin_toolbar;
+import static com.example.nguyentrandroid.wikicountry.R.id.ifRoom;
 
 public class List_Country_Activity extends AppCompatActivity implements SearchView.OnQueryTextListener{
     private RecyclerView mRecyclerView;
@@ -39,10 +42,16 @@ public class List_Country_Activity extends AppCompatActivity implements SearchVi
     SearchView searchView;
     RecyclerView.Adapter mAdapter;
     ArrayList<Country> arrayTemp = new ArrayList<>();
+    String dataapp ="ngon_ngu";
+    int nn;
+    String ma, tentien, donvi, tenngonngu, tendiaphuongngonngu;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_country_);
+        sharedPreferences = getSharedPreferences(dataapp , Context.MODE_PRIVATE);
+        sharedPreferences =getSharedPreferences(getPackageName(), 0);
         intit();
         intdata();
         intevent();
@@ -54,6 +63,22 @@ public class List_Country_Activity extends AppCompatActivity implements SearchVi
     }
     private void intevent() {
         searchView.setOnQueryTextListener(this);
+        nn= sharedPreferences.getInt("ngonngu",1);
+        String b = getString(R.string.timkiemv);
+        if(nn!=1){
+            searchView.setQueryHint(b);
+            ma = "Mã: ";
+            tentien = "Tên: ";
+            donvi = "Đơn vị: ";
+            tenngonngu = "Tên: ";
+            tendiaphuongngonngu = "Tên địa phương: ";
+        } else {
+            ma = "Code: ";
+            tentien = "Name: ";
+            donvi = "Symbol: ";
+            tenngonngu = "Name: ";
+            tendiaphuongngonngu = "NativeName: ";
+        }
     }
 
     private void intdata() {
@@ -125,7 +150,7 @@ public class List_Country_Activity extends AppCompatActivity implements SearchVi
                 JSONArray jsonArray4 = jsonObject.getJSONArray("languages");
                 for (int a = 0; a < jsonArray4.length(); a++) {
                     JSONObject jsonObject1 = jsonArray4.getJSONObject(a);
-                    languages = languages + "Name: " + jsonObject1.getString("name") + "\n" + "NativeName: " + jsonObject1.getString("nativeName") + "\n" + "\n";
+                    languages = languages + tenngonngu + jsonObject1.getString("name") + "\n" + tendiaphuongngonngu + jsonObject1.getString("nativeName") + "\n" + "\n";
                 }
                 Log.d("AAA", languages);
                 String area = jsonObject.getString("area") + "km2";
@@ -133,9 +158,9 @@ public class List_Country_Activity extends AppCompatActivity implements SearchVi
                 JSONArray jsonArray5 = jsonObject.getJSONArray("currencies");
                 for (int b = 0; b < jsonArray5.length(); b++) {
                     JSONObject jsonObject2 = jsonArray5.getJSONObject(b);
-                    currencies = currencies + "Code: " + jsonObject2.getString("code") + "\n" +
-                            "Name: " + jsonObject2.getString("name") + "\n" +
-                            "Symbol: " + jsonObject2.getString("symbol");
+                    currencies = currencies + ma + jsonObject2.getString("code") + "\n" +
+                            tentien + jsonObject2.getString("name") + "\n" +
+                            donvi + jsonObject2.getString("symbol");
                 }
                 countryArrayList.add(new Country(name, code, capital, region, population, callingCodes, timezones,
                         nativeName, borders, languages, area, currencies));
