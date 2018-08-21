@@ -61,7 +61,7 @@ public class List_Country_Activity extends AppCompatActivity implements SearchVi
     }
 
     private void intit() {
-        searchView =findViewById(R.id.searchcoin);
+        searchView =findViewById(R.id.searchview);
         mRecyclerView = findViewById(R.id.actin_recycleview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
     }

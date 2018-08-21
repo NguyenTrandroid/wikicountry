@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:queryHint="Search here"
             android:iconifiedByDefault="true"
-            android:id="@+id/searchcoin">
+            android:id="@+id/searchview">
         </SearchView>
     </android.support.v7.widget.Toolbar>
 
