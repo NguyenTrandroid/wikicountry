@@ -41,6 +41,7 @@ public class Info_Team_Activity extends AppCompatActivity {
         editor.commit();
         Intent intent = new Intent(this,List_Country_Activity.class);
         startActivity(intent);
+        finish();
     }
 
     public void chontiengviet(View view) {
@@ -49,6 +50,7 @@ public class Info_Team_Activity extends AppCompatActivity {
         editor.commit();
         Intent intent = new Intent(this,List_Country_Activity.class);
         startActivity(intent);
+        finish();
     }
 }
 

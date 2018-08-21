@@ -8,6 +8,7 @@ import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.example.nguyentrandroid.wikicountry.Activity.Info_Country_Activity;
@@ -16,8 +17,10 @@ import com.example.nguyentrandroid.wikicountry.R;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.logging.Filter;
+import java.util.logging.LogRecord;
 
-public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> {
+public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> implements Filterable{
     ArrayList<Country> countryArrayList;
     Context context;
     ArrayList<Country> arrayTemp;
@@ -82,4 +85,28 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         }
         notifyDataSetChanged();
     }
+
+    @Override
+    public android.widget.Filter getFilter() {
+        return exampleFileter;
+    }
+    private android.widget.Filter exampleFileter = new android.widget.Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            ArrayList<Country> filteredList = new ArrayList<>();
+            if (charSequence == null || charSequence.length()==0){
+                filteredList.addAll(countryArrayList);
+            } else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for (Country item : countryArrayList ){
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+        }
+    };
 }

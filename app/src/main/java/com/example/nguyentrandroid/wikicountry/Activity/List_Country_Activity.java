@@ -7,8 +7,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 
 import com.example.nguyentrandroid.wikicountry.Adapter.CountryAdapter;
@@ -26,13 +28,17 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class List_Country_Activity extends AppCompatActivity {
+import static com.example.nguyentrandroid.wikicountry.R.id.actin_toolbar;
+
+public class List_Country_Activity extends AppCompatActivity implements SearchView.OnQueryTextListener{
     private RecyclerView mRecyclerView;
-    private CountryAdapter countryAdapter;
+    private CountryAdapter countryAdapter,adapter;
     public static ArrayList<Country> countryArrayList = new ArrayList<>();
     SearchView searchView;
-
+    RecyclerView.Adapter mAdapter;
+    ArrayList<Country> arrayTemp = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +52,8 @@ public class List_Country_Activity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     private void intevent() {
+        searchView.setOnQueryTextListener(this);
     }
 
     private void intdata() {
@@ -55,9 +61,9 @@ public class List_Country_Activity extends AppCompatActivity {
     }
 
     private void intit() {
+        searchView =findViewById(R.id.searchcoin);
         mRecyclerView = findViewById(R.id.actin_recycleview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
     }
 
     private void setUpRecyclerView() {
@@ -143,5 +149,29 @@ public class List_Country_Activity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        Log.d("BBB",query);
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        arrayTemp.clear();
+        if (newText.length() == 0) {
+            arrayTemp.addAll(countryArrayList);
+        } else {
+            for (Country country : countryArrayList) {
+                if (country.getName().toLowerCase().substring(0,newText.length()).contains(newText.toLowerCase())){
+                    arrayTemp.add(country);
+                }
+            }
+        }
+        adapter = new CountryAdapter(arrayTemp,this);
+        mRecyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        return false;
     }
 }
